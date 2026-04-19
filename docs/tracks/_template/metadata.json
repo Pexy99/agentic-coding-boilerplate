@@ -1,0 +1,8 @@
+{
+  "track_id": "[track_id_YYYYMMDD]",
+  "type": "feature",
+  "status": "new",
+  "created_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "updated_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "description": "[Brief description]"
+}

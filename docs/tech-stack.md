@@ -1,17 +1,20 @@
 # Tech Stack
 
+이 문서는 프로젝트의 기술 선택, 제약 사항 및 도입 근거를 관리합니다. 기술 스택 변경 전 반드시 이 문서를 먼저 업데이트해야 합니다.
+
 ## Language
-- **Python 3.10+**: The industry standard for AI and agentic workflows, offering a vast ecosystem of libraries.
+- [예: Python 3.10+]
 
 ## Core Frameworks
-- **LangChain / LlamaIndex**: For LLM orchestration, tool routing, and memory management abstractions.
-- **Pydantic**: For strict data validation, typed configuration, and robust structured LLM outputs.
+- [예: Fast API, Typer]
 
-## Database (Memory & State)
-- **SQLite / PostgreSQL**: For persistent agent state and transactional memory.
-- **ChromaDB / Pinecone**: Vector databases for semantic search and long-term context retrieval.
+## Data Persistence
+- [예: PostgreSQL, Redis]
 
 ## Tooling & Infrastructure
-- **Poetry / uv**: For fast, deterministic dependency management and packaging.
-- **Pytest**: For comprehensive unit and integration testing.
-- **Ruff**: For extremely fast linting and formatting.
+- [예: uv, Pytest, Ruff]
+- **CI/CD**: GitHub Actions
+
+## Architecture Principles
+- **Modular Monolith**: 관심사 분리를 위한 모듈화된 모놀리스 구조 지향.
+- **Strict Typing**: 모든 인터페이스와 데이터 모델에 정적 타입 적용.
