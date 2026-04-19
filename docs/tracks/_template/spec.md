@@ -1,15 +1,16 @@
-# Specification: [Feature Name]
+# Spec: [Track Name]
 
-## Objective
-이 트랙이 해결하려는 문제와 최종 목표를 기술합니다.
+## 목표
+무엇을 만들거나 고칠 것인지 짧게 적습니다.
 
-## Scope
-- 구현할 핵심 기능 목록
-- 제외 대상 (Out of Scope)
+## 범위
+- 이번에 하는 것:
+- 이번에 하지 않는 것:
 
-## Acceptance Criteria
-- [ ] 기능 A가 정상 작동해야 함
-- [ ] 성능 지표 B를 만족해야 함
+## 완료 기준
+- [ ] 사용자가 ___ 할 수 있다.
+- [ ] ___ 상황에서 에러가 나지 않는다.
 
-## Technical Constraints
-- `docs/tech-stack.md`에 명시된 제약 사항을 준수합니다.
+## 참고
+- 관련 화면/API/파일:
+- 제약 사항:

@@ -1,21 +1,39 @@
-# Initial Concept
+# Product Context
 
-common boilerplate for agentic coding
+이 문서는 팀원과 AI 에이전트가 같은 제품 문맥을 공유하기 위한 최소 제품 가이드입니다. 실제 프로젝트를 시작할 때 아래 항목을 짧게 채웁니다.
 
-# Product Guide
+## 한 줄 설명
+[이 프로젝트가 무엇인지 한 문장으로 설명합니다.]
 
-## Vision
-A common boilerplate for agentic coding, designed to accelerate the development of production-grade autonomous agents.
+예: 팀원이 오늘 할 일을 공유하고 진행 상태를 확인하는 간단한 협업 도구.
 
-## Target Audience
-- **Software Engineers:** Developers building robust and scalable autonomous agents for production environments.
+## 해결하려는 문제
+- [사용자 또는 팀이 겪는 문제 1]
+- [사용자 또는 팀이 겪는 문제 2]
 
-## Core Features
-- **Memory Management:** Built-in mechanisms for handling long-term and short-term agent memory.
-- **Tool Orchestration:** Standardized interfaces and routing logic for seamless tool execution and integration.
+## 주요 사용자
+- [주 사용자 그룹]
+- [보조 사용자 그룹, 없으면 삭제]
 
-## Architecture
-- **Modular Framework:** A highly decoupled, plug-and-play architectural style that allows engineers to swap components easily as project needs evolve.
+## 핵심 목표
+- [가장 중요한 목표 1]
+- [가장 중요한 목표 2]
+- [가장 중요한 목표 3]
 
-## Ecosystem
-- **Python:** Tailored for the Python ecosystem, ensuring compatibility with popular AI libraries and tooling.
+## 이번 버전의 범위
+
+### 포함
+- [이번 버전에서 만들 기능 또는 흐름]
+
+### 제외
+- [이번 버전에서 하지 않을 것]
+
+## 성공 기준
+- [ ] 사용자가 ___ 할 수 있다.
+- [ ] 팀이 ___ 없이 작업을 진행할 수 있다.
+- [ ] 핵심 흐름을 ___분 안에 완료할 수 있다.
+
+## 참고
+- 관련 링크:
+- 디자인/기획 자료:
+- 중요한 제약:

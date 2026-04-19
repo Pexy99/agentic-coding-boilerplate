@@ -4,9 +4,9 @@
 
 ## 핵심 컨텍스트
 구현 전 다음 문서를 순서대로 로드하십시오:
-- `docs/workflow.md`
-- `docs/tech-stack.md`
 - `docs/product.md`
+- `docs/tech-stack.md`
+- `docs/workflow.md`
 
 ## 작업 진행
 - 활성 트랙 정보는 `docs/tracks.md` 및 `docs/tracks/<track_id>/`에서 확인하십시오.

@@ -1,10 +1,12 @@
-# Plan: [Feature Name]
+# Plan: [Track Name]
 
-## Phase 1: [Phase Name]
-- [ ] Task: [Task Description]
-    - [ ] sub-task: [Details]
-- [ ] Task: Manual Verification '[Phase Name]' (Protocol in workflow.md)
+## 작업 목록
+- [ ] 관련 파일과 기존 흐름 확인
+- [ ] 테스트 또는 수동 검증 방법 정리
+- [ ] 구현
+- [ ] 검증 실행
+- [ ] 필요한 문서 업데이트
 
-## Phase 2: [Phase Name]
-- [ ] Task: [Task Description]
-- [ ] Task: Manual Verification '[Phase Name]' (Protocol in workflow.md)
+## 메모
+- 결정 사항:
+- 남은 이슈:

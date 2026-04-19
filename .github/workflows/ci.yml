@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  repository-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check required workflow docs
+        run: |
+          test -f AGENTS.md
+          test -f CONTRIBUTING.md
+          test -f docs/workflow.md
+          test -f docs/tech-stack.md
+          test -f docs/product.md
+          test -f docs/tracks.md
+          test -f docs/tracks/_template/spec.md
+          test -f docs/tracks/_template/plan.md

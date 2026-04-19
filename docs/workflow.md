@@ -1,39 +1,61 @@
-# Project Protocol (Agent-Agnostic Workflow)
+# Project Workflow
 
 ## 1. 개요
-이 프로젝트는 **문서 주도 개발(Document-Driven Development)** 방법론을 따릅니다. 모든 협업자(인간 및 AI)는 본 문서의 규칙을 준수해야 합니다.
+이 프로젝트는 작은 팀과 AI 에이전트가 같은 문맥으로 일하기 위한 문서 기반 워크플로우를 사용합니다. 문서는 작업을 돕기 위한 것이며, 작은 변경까지 불필요하게 무겁게 만들지 않습니다.
 
 ## 2. 핵심 원칙 (Core Principles)
-1. **Plan as Source of Truth**: 모든 실행 상태는 `docs/tracks/<id>/plan.md`에 기록됩니다.
-2. **Spec Before Code**: 구현 전 상세 명세(`spec.md`)가 반드시 확정되어야 합니다.
-3. **Standardized Hand-over**: 에이전트 교체 시 `plan.md`와 `git notes`를 통해 맥락을 동기화합니다.
-4. **TDD (Test-Driven Development)**: 기능 구현 전 실패하는 테스트 작성을 권장합니다.
+1. **Docs as Shared Context**: 제품 맥락, 기술 선택, 작업 규칙은 `docs/`에 둡니다.
+2. **Plan as Task Status**: 트랙 작업의 진행 상태는 `docs/tracks/<id>/plan.md`에 기록합니다.
+3. **Keep It Small**: `spec.md`와 `plan.md`는 짧고 실행 가능한 수준으로 유지합니다.
+4. **Verify Changes**: 코드 변경에는 테스트, 수동 확인, 리뷰 중 적절한 검증을 남깁니다.
 
-## 3. 작업 프로세스 (Task Lifecycle)
+## 3. 작업 크기 기준
 
-### [Step 1] 맥락 파악 및 작업 선택
-- `docs/tracks.md`에서 활성화된 트랙을 확인합니다.
-- 해당 트랙의 `plan.md`에서 다음 작업(`[ ]`)을 선택합니다.
+### Level 1: 작은 수정
+오타, 문서 정리, 간단한 스타일 수정처럼 영향 범위가 작은 작업입니다.
+- 트랙 없이 바로 수정할 수 있습니다.
+- 커밋 또는 PR 설명에 변경 이유를 남깁니다.
 
-### [Step 2] 작업 시작 표시
-- `plan.md`에서 해당 항목을 `[~]` (In Progress)로 변경합니다.
+### Level 2: 일반 작업
+기능 추가, 버그 수정, API 변경, 화면 변경처럼 팀원이 맥락을 알아야 하는 작업입니다.
+- `docs/tracks/_template/`을 복사해 트랙을 만듭니다.
+- `spec.md`와 `plan.md`를 짧게 작성합니다.
+- `docs/tracks.md`에 활성 트랙으로 등록합니다.
+- 트랙 ID는 `<type>_<short_name>_<YYYYMMDD>` 형식을 사용합니다. 예: `feat_login_20260419`
 
-### [Step 3] TDD Cycle (Red-Green-Refactor)
-- **Red**: 요청된 기능을 검증하는 실패하는 테스트를 작성합니다.
-- **Green**: 테스트를 통과시키는 최소한의 코드를 작성합니다.
-- **Refactor**: 코드 품질을 개선하고 테스트 재실행을 확인합니다.
+### Level 3: 큰 결정
+DB, 인증, 배포, 프레임워크, 큰 구조 변경처럼 되돌리기 어려운 작업입니다.
+- Level 2 절차를 따릅니다.
+- 필요하면 `docs/adr/`에 결정 기록을 남깁니다.
+- 기술 선택이 바뀌면 `docs/tech-stack.md`를 업데이트합니다.
 
-### [Step 4] 작업 완료 및 기록
-1. **커밋**: 원자적 단위로 커밋합니다. (예: `feat(core): ...`)
-2. **Git Notes (선택)**: 상세 사유가 필요한 경우 `git notes add -m "<Summary>"`를 사용합니다.
-3. **Plan 업데이트**: `plan.md`의 상태를 `[x]`로 변경하고 커밋 해시(Short SHA)를 병기합니다.
+## 4. 트랙 작업 흐름
 
-## 4. 품질 게이트 (Quality Gates)
-태스크 완료 전 다음 사항을 자가 점검합니다:
-- [ ] 모든 테스트 통과 여부
-- [ ] 코드 커버리지 확인 (목표 >80%, 작은 팀의 경우 핵심 로직 우선)
+1. `docs/tracks.md`에서 활성 트랙을 확인합니다.
+2. 해당 트랙의 `spec.md`와 `plan.md`를 읽습니다.
+3. 시작한 항목은 `plan.md`에서 `[~]`로 표시합니다.
+4. 구현하고 검증합니다.
+5. 완료한 항목은 `[x]`로 표시하고, 가능하면 커밋 해시를 남깁니다.
+
+## 5. 검증 기준
+
+작업 완료 전 다음을 자가 점검합니다:
+- [ ] 관련 테스트 통과 여부
+- [ ] 테스트가 없다면 수동 확인 방법 기록
 - [ ] 관련 코드 스타일 가이드 준수 (`docs/code_styleguides/` 참조)
-- [ ] `docs/` 내 관련 문서(Spec, Tech-stack 등) 업데이트 여부
+- [ ] 필요한 문서 업데이트 여부
 
-## 5. 단계별 검증 프로토콜 (Phase Verification)
-각 단계(Phase) 완료 시 전체 테스트를 실행하고 체크포인트 커밋(`checkpoint: ...`)을 생성합니다.
+## 6. 선택 기록
+
+- `git notes`는 선택 사항입니다. PR 설명과 `plan.md`만으로 충분하면 사용하지 않아도 됩니다.
+- ADR은 큰 기술 결정에만 작성합니다.
+- 체크포인트 커밋은 긴 작업에서 필요할 때만 만듭니다.
+
+## 7. 이름 규칙
+
+트랙 ID, 브랜치, 커밋 메시지는 같은 type을 사용합니다.
+
+- 사용 가능한 type: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
+- 트랙 ID: `feat_login_20260419`
+- 브랜치: `feat/login_20260419`
+- 커밋: `feat: add login form`
