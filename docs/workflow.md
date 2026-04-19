@@ -1,4 +1,4 @@
-# Conductor Protocol (Agent-Agnostic Workflow)
+# Project Protocol (Agent-Agnostic Workflow)
 
 ## 1. 개요
 이 프로젝트는 **문서 주도 개발(Document-Driven Development)** 방법론을 따릅니다. 모든 협업자(인간 및 AI)는 본 문서의 규칙을 준수해야 합니다.
@@ -36,4 +36,4 @@
 - [ ] `docs/` 내 관련 문서(Spec, Tech-stack 등) 업데이트 여부
 
 ## 5. 단계별 검증 프로토콜 (Phase Verification)
-각 단계(Phase) 완료 시 전체 테스트를 실행하고 체크포인트 커밋(`conductor(checkpoint): ...`)을 생성합니다.
+각 단계(Phase) 완료 시 전체 테스트를 실행하고 체크포인트 커밋(`checkpoint: ...`)을 생성합니다.
