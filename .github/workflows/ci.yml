@@ -8,6 +8,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  statuses: write
+
 jobs:
   repository-checks:
     runs-on: ubuntu-latest
@@ -16,6 +20,7 @@ jobs:
 
       - name: Check required workflow docs
         run: |
+          set -euo pipefail
           test -f AGENTS.md
           test -f CONTRIBUTING.md
           test -f docs/workflow.md
@@ -24,3 +29,13 @@ jobs:
           test -f docs/tracks.md
           test -f docs/tracks/_template/spec.md
           test -f docs/tracks/_template/plan.md
+
+      - name: Lint Markdown and YAML
+        uses: super-linter/super-linter/slim@v8.3.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_MARKDOWN: true
+          VALIDATE_YAML: true
+          VALIDATE_GITHUB_ACTIONS: true
+          FILTER_REGEX_INCLUDE: .*\.(md|ya?ml)$

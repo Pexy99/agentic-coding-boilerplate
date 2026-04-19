@@ -2,6 +2,16 @@
 
 이 문서는 새 프로젝트에서 사람이 직접 설정해야 하는 항목을 정리합니다. 저장소 문서와 템플릿만으로 자동 적용되지 않는 GitHub 설정을 포함합니다.
 
+## Related Guides
+
+- 보일러플레이트 사용법: `docs/boilerplate-guide.md`
+- 팀 작업 흐름: `CONTRIBUTING.md`
+- 제품 문맥: `docs/product.md`
+- 기술 스택: `docs/tech-stack.md`
+- CI 기준: `docs/ci.md`
+- 배포 절차: `docs/deployment.md`
+- 코드 스타일가이드 추가: `docs/code_styleguides/README.md`
+
 ## 1. Project Context
 
 먼저 프로젝트의 공통 문맥을 채웁니다. 이 단계가 끝나기 전에는 기능 구현을 시작하지 않습니다.
@@ -34,6 +44,8 @@ GitHub 저장소 설정에서 `.github/workflows/ci.yml`의 `CI` 체크를 requi
 - Python: `ruff check .`, `ruff format --check .`, `pytest`
 - Node.js: `npm run lint`, `npm test`
 
+CI에 어떤 검사를 추가할지는 `docs/ci.md`를 기준으로 결정합니다.
+
 ## 4. Repository Access
 
 팀원 권한은 최소 권한으로 시작합니다.
@@ -65,6 +77,13 @@ GitHub 저장소를 만든 뒤 아래 설정을 확인합니다.
 - [ ] Keep `.github/workflows/ci.yml` required on PRs
 - [ ] Add real lint/test commands when project code is added
 - [ ] Keep `.github/pull_request_template.md` enabled
+- [ ] Review `docs/ci.md` when adding a new language or framework
+
+### Secrets and Environments
+- [ ] Store secrets only in the deployment platform or GitHub Secrets
+- [ ] Do not commit `.env` files or real credentials
+- [ ] Document required environment variables in `docs/deployment.md`
+- [ ] Give production secret access only to maintainers
 
 ## 6. Team Communication Rule
 

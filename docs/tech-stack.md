@@ -15,6 +15,7 @@
 - [예: uv, Pytest, Ruff]
 - **CI/CD**: GitHub Actions
 - **Deployment**: [예: Vercel, Render, Railway, AWS, GitHub Pages]
+- CI 검사 추가 기준은 `docs/ci.md`를 따릅니다.
 
 ## Code Style Guides
 - [예: `docs/code_styleguides/python.md`]
