@@ -26,6 +26,8 @@ Markdown과 YAML lint 설정은 아래 파일에서 관리합니다.
 - `.markdown-lint.yml`
 - `.yaml-lint.yml`
 
+Super-Linter는 기본적으로 `.github/linters`에서 설정 파일을 찾습니다. 이 저장소는 설정 파일을 루트에 두기 때문에 workflow에서 `LINTER_RULES_PATH: .`를 명시합니다.
+
 ## 코드가 생기면 추가할 것
 
 프로젝트 기술 스택이 정해지면 아래 중 필요한 항목을 CI에 추가합니다.

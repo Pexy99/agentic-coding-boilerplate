@@ -38,7 +38,7 @@
 
 GitHub 저장소 설정에서 `.github/workflows/ci.yml`의 `CI` 체크를 required status check로 등록합니다.
 
-현재 CI는 필수 문서 존재 여부만 확인합니다. 실제 코드가 생기면 프로젝트 기술 스택에 맞춰 테스트와 린트를 추가합니다.
+현재 CI는 필수 문서 존재 여부와 Markdown/YAML lint를 확인합니다. 실제 코드가 생기면 프로젝트 기술 스택에 맞춰 테스트와 린트를 추가합니다.
 
 예:
 - Python: `ruff check .`, `ruff format --check .`, `pytest`

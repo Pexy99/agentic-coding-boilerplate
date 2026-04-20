@@ -18,8 +18,8 @@
 
 ### Level 2: 일반 작업
 기능 추가, 버그 수정, API 변경, 화면 변경처럼 팀원이 맥락을 알아야 하는 작업입니다.
-- `docs/tracks/_template/`을 복사해 트랙을 만듭니다.
-- `spec.md`와 `plan.md`를 짧게 작성합니다.
+- `start-track` 스킬로 트랙을 만듭니다.
+- 스킬이 `spec.md`와 `plan.md`를 짧게 작성하거나, 정보가 부족하면 먼저 질문합니다.
 - `docs/tracks.md`에 활성 트랙으로 등록합니다.
 - 트랙 ID는 `<type>_<short_name>_<YYYYMMDD>` 형식을 사용합니다. 예: `feat_login_20260419`
 
