@@ -21,6 +21,8 @@
 
 Markdown/YAML 검사는 Super-Linter를 사용합니다. 이 보일러플레이트는 코드가 없는 상태에서도 문서와 GitHub Actions 설정 품질을 먼저 잡는 것을 목표로 합니다.
 
+Super-Linter는 기본 브랜치 기준으로 변경 사항을 판단할 수 있어야 합니다. CI에서 `main` 또는 `origin/main`을 찾지 못하는 오류를 피하기 위해 `actions/checkout`은 `fetch-depth: 0`으로 전체 히스토리를 가져옵니다.
+
 Markdown과 YAML lint 설정은 아래 파일에서 관리합니다.
 
 - `.markdown-lint.yml`

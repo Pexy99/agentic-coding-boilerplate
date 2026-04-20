@@ -29,6 +29,8 @@
 - PR을 통한 병합 필수
 - 최소 1명 리뷰 승인 필수
 - GitHub Actions `CI` 통과 필수
+- PR conversation resolve 필수
+- 보호 규칙 우회 금지
 - force push 금지
 - branch 삭제 금지
 
@@ -58,18 +60,30 @@ CI에 어떤 검사를 추가할지는 `docs/ci.md`를 기준으로 결정합니
 
 GitHub 저장소를 만든 뒤 아래 설정을 확인합니다.
 
+이 보일러플레이트의 기본 브랜치 전략은 `main` 보호, squash merge, PR 기반 병합입니다. 특별한 이유가 없다면 아래 값을 기본값으로 사용합니다.
+
+### Local Tools
+- [ ] GitHub CLI(`gh`) 설치
+- [ ] `gh auth login`으로 GitHub 인증
+- [ ] `prepare-pr` 스킬로 PR 생성이 가능한지 확인
+
+### General -> Pull Requests
+- [ ] Allow squash merging: ON
+- [ ] Automatically delete head branches: ON
+
 ### Branch Protection for `main`
-- [ ] Require a pull request before merging
-- [ ] Require at least 1 approval
+- [ ] Require a pull request before merging: ON
+- [ ] Required approvals: 1
 - [ ] Dismiss stale pull request approvals when new commits are pushed
-- [ ] Require status checks to pass before merging
-- [ ] Required check: `CI`
-- [ ] Block force pushes
-- [ ] Block branch deletion
+- [ ] Require status checks to pass before merging: ON
+- [ ] Required status check: `CI`
+- [ ] Require conversation resolution before merging: ON
+- [ ] Do not allow bypassing the above settings: ON
+- [ ] Allow force pushes: OFF
+- [ ] Allow deletions: OFF
 
 ### Merge Settings
-- [ ] Enable squash merge
-- [ ] Set squash merge as default
+- [ ] Use squash merge as the default merge method
 - [ ] Disable merge commits, if the team wants a cleaner `main` history
 - [ ] Rebase merge is optional
 
@@ -105,3 +119,16 @@ GitHub 저장소를 만든 뒤 아래 설정을 확인합니다.
 - 배포 대상이 정해졌다면 `docs/deployment.md`가 수정됨
 - `docs/tracks.md`에 활성 트랙이 등록됨
 - 필요 시 `.github/workflows/ci.yml`에 실제 테스트/린트 명령 추가
+
+## 8. Optional: GitHub Settings as Code
+
+브랜치 보호 규칙을 Terraform으로 관리할 수는 있지만, 6명 내외의 초기 팀에서는 필수로 두지 않습니다. 처음에는 GitHub UI로 설정하고 `docs/project-setup.md` 체크리스트로 관리하는 편이 더 가볍습니다.
+
+Terraform 관리는 아래 조건 중 하나에 해당할 때 도입합니다.
+
+- 같은 규칙을 여러 저장소에 반복 적용해야 함
+- 저장소 설정 변경 이력을 코드 리뷰로 남겨야 함
+- 팀에 Terraform을 운영할 사람이 있음
+- GitHub 설정이 자주 바뀌어 수동 관리가 부담됨
+
+도입한다면 브랜치 보호, required checks, merge strategy, auto-delete branch 설정부터 관리합니다.
