@@ -12,11 +12,12 @@
 ## 프로젝트 초기화
 새 프로젝트를 시작할 때 가장 먼저 공통 문맥을 채웁니다.
 
-1. `docs/product.md`에 제품 목적, 사용자, 범위, 성공 기준을 작성합니다.
-2. `docs/tech-stack.md`에 사용할 기술과 제약을 작성합니다.
-3. `docs/project-setup.md`를 따라 GitHub 브랜치 보호와 required check를 설정합니다.
-4. 개발은 `CONTRIBUTING.md`의 스킬 흐름에 따라 진행합니다.
-5. 배포 대상이 정해졌다면 `docs/deployment.md`에 배포 환경과 절차를 작성합니다.
+1. `/init-project`로 전역 문맥을 초기화합니다.
+2. `docs/product.md`에 제품 목적, 사용자, 범위, 성공 기준을 작성합니다.
+3. `docs/tech-stack.md`에 사용할 기술과 제약을 작성합니다.
+4. `docs/project-setup.md`를 따라 GitHub 브랜치 보호와 required check를 설정합니다.
+5. 개발은 `CONTRIBUTING.md`의 스킬 흐름에 따라 진행합니다.
+6. 배포 대상이 정해졌다면 `docs/deployment.md`에 배포 환경과 절차를 작성합니다.
 
 ## 작업 시작
 이미 초기화된 프로젝트에서 작업을 시작할 때는 다음 문서를 확인합니다.

@@ -17,14 +17,18 @@ description: Check whether a code or documentation change is ready for PR or mer
 7. 코드 변경인데 테스트 파일이 추가/수정되지 않았다면 자동화 테스트가 불필요하거나 어려운 이유가 기록됐는지 확인합니다.
 8. 자동 검증이 없거나 실행할 수 없다면 수동 검증 방법과 결과를 기록했는지 확인합니다.
 9. 필요한 문서가 업데이트됐는지 확인합니다.
-10. 브랜치, 커밋, 트랙 ID의 type이 맞는지 확인합니다.
-11. PR 템플릿에 채울 요약과 검증 내용을 정리합니다.
+10. 트랙 작업이면 `docs/tracks.md`에서 Active 유지 또는 History 이동이 실제 상태와 맞는지 확인합니다.
+11. 브랜치, 커밋, 트랙 ID의 type이 맞는지 확인합니다.
+12. PR 템플릿에 채울 요약과 검증 내용을 정리합니다.
 
 ## Validation Hints
 - 코드 변경은 관련 코드 스타일가이드(`docs/code_styleguides/`)와 프로젝트 lint/test 명령을 확인합니다.
 - 자동화 테스트를 기본값으로 보고, 수동 검증은 자동화가 어렵거나 비용이 큰 경우의 보완책으로 봅니다.
+- UI 작업은 광범위한 E2E 자동화보다 핵심 happy path와 수동 검증 체크리스트를 우선합니다.
+- 데이터 처리나 입력/출력 비교처럼 결정론적인 영역은 자동화 비중을 더 높입니다.
 - 문서나 YAML 변경은 CI 설정과 lint 설정(`docs/ci.md`, `.markdown-lint.yml`, `.yaml-lint.yml`)을 확인합니다.
 - 프로젝트별 검증 명령이 정해져 있으면 `docs/tech-stack.md` 또는 `docs/ci.md`의 기준을 따릅니다.
+- 완료된 트랙은 PR 안에서 `docs/tracks.md`의 History로 이동하고, 후속 작업이 남은 트랙은 Active에 둡니다.
 
 ## Output
 - 통과한 항목
