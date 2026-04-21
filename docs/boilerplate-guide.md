@@ -1,38 +1,80 @@
 # Boilerplate Guide
 
-이 문서는 이 저장소가 제공하는 문서 기반 AI 협업 보일러플레이트의 사용법을 설명합니다.
+이 저장소는 가능한 한 스킬 중심으로 사용합니다. 사람이 처음부터 문서를 하나씩 수동 작성하는 흐름을 기본값으로 두지 않습니다.
 
-실제 프로젝트를 시작하면 `README.md`는 프로젝트 소개와 실행 방법으로 교체하고, 보일러플레이트 사용법은 이 문서에 보관합니다.
+## 기본 원칙
 
-## 핵심 철학
+- 새 프로젝트 시작은 `/init-project`
+- 작은 수정은 `/quick-change`
+- 기능, 버그, 구조 변경은 `/start-track`
+- 구현은 `/implement-track`
+- 검증은 `/validate-change`
+- PR 준비는 `/prepare-pr`
 
-- **Shared Context**: 제품 맥락, 기술 선택, 작업 규칙은 `docs/` 아래의 마크다운 문서에 기록됩니다.
-- **Agent-Agnostic**: 특정 도구에 종속되지 않으며, 어떤 AI 모델과도 협업 가능한 어댑터 레이어를 제공합니다.
-- **Track-Based When Useful**: 기능, 버그, 구조 변경처럼 맥락 공유가 필요한 작업은 트랙(Track)으로 관리합니다.
+각 스킬은 한 단계만 담당합니다. 다음 단계는 제안만 하고 자동으로 이어서 수행하지 않습니다.
 
 ## 프로젝트 초기화
 
-새 프로젝트를 시작할 때 가장 먼저 공통 문맥을 채웁니다.
+초기화는 가능한 한 `/init-project` 하나로 끝내는 것을 기본값으로 둡니다.
 
-1. `docs/product.md`에 제품 목적, 사용자, 범위, 성공 기준을 작성합니다.
-2. `docs/tech-stack.md`에 사용할 기술과 제약을 작성합니다.
-3. `docs/project-setup.md`를 따라 GitHub 브랜치 보호와 required check를 설정합니다.
-4. 개발은 `CONTRIBUTING.md`의 스킬 흐름에 따라 진행합니다.
-5. 배포 대상이 정해졌다면 `docs/deployment.md`에 배포 환경과 절차를 작성합니다.
+`/init-project`는 최소한 아래 항목을 한 번에 초안화하거나 갱신해야 합니다.
 
-## 작업 시작
+- 루트 `README.md`
+- `docs/product.md`
+- `docs/tech-stack.md`
+- 구조 규칙과 스캐폴딩 결정
+- 기본 검증 기준
+- 사람이 직접 해야 하는 설정이 있으면 `docs/project-setup.md`의 TODO
+- 배포 대상이 정해져 있으면 `docs/deployment.md`의 초안 또는 TODO
 
-이미 초기화된 프로젝트에서 작업을 시작할 때는 다음 문서를 확인합니다.
+초기화 이후 기본 동작은 "문서를 추가로 많이 작성"하는 것이 아니라 "생성된 초안을 검토하고 필요한 부분만 고치는 것"입니다.
 
-1. `docs/workflow.md`에서 작업 크기와 검증 규칙을 확인합니다.
-2. `docs/tracks.md`에서 활성 트랙을 확인합니다.
-3. 새 작업, 구현, 중간 커밋, 검증, PR 준비는 `CONTRIBUTING.md`의 스킬 사용 순서를 따릅니다.
+초기 흐름:
 
-## 협업 가이드
+1. `/init-project` 실행
+2. 생성된 초안 검토
+3. 사실과 다른 부분만 수정
+4. 바로 `quick-change` 또는 `start-track`으로 진행
 
-- 팀원 작업 규칙: `CONTRIBUTING.md`
-- 에이전트 진입점: `AGENTS.md`
-- 프로젝트 문맥: `docs/product.md`
-- 기술 스택: `docs/tech-stack.md`
-- 배포 가이드: `docs/deployment.md`
-- 프로젝트 설정: `docs/project-setup.md`
+즉, 기본 흐름은 `init-project -> 검토 -> 작업 시작`입니다.
+
+## 프로젝트 구조
+
+구조 규칙은 자유방임으로 두지 않습니다.
+
+- 기술 선택은 `docs/tech-stack.md`
+- 작업 규칙은 `docs/workflow.md`
+- 가능한 경우 공식 CLI 또는 스캐폴더를 우선 사용
+- 앱 코드는 문서화된 위치에만 둠. 예: `src/`
+- 루트에는 문서, 설정 파일, 전역 엔트리만 둠
+
+## 문서 사용 방식
+
+문서는 스킬이 먼저 초안을 만들고, 사람이 사실 여부를 검토하는 방식으로 유지합니다.
+
+- 전역 문서 초안: `/init-project`
+- 트랙 문서 초안: `/start-track`
+- ADR 문서 초안: `/write-adr`
+
+사람이 직접 해야 하는 설정이나 운영 정보는 문서에 TODO로 남기고, 가능한 한 스킬이 먼저 뼈대를 만듭니다.
+
+## 검증 원칙
+
+검증도 가능한 한 스킬 중심으로 진행합니다.
+
+- 구현 후 검증은 `/validate-change`
+- UI는 전체 E2E 남발보다 핵심 경로와 수동 검증 체크리스트를 우선
+- 결정론적인 테스트는 자동화를 우선
+- PR 준비 전에는 기본적으로 `/validate-change`를 먼저 수행
+
+## GitHub 설정과 운영
+
+GitHub 설정, 권한, 브랜치 보호처럼 사람이 직접 적용해야 하는 항목은 [project-setup.md](/Users/ahyun/work/ai-dev/agentic-coding-boilerplate/docs/project-setup.md)에 둡니다.
+
+배포 환경, 시크릿, 롤백 기준처럼 프로젝트별로 달라지는 운영 정보는 [deployment.md](/Users/ahyun/work/ai-dev/agentic-coding-boilerplate/docs/deployment.md)에 둡니다.
+
+즉, 보일러플레이트의 기본 철학은 다음과 같습니다.
+
+- 가능한 한 스킬이 초안을 만든다
+- 문서는 스킬 결과를 검토하는 용도로 쓴다
+- 사람이 직접 해야 하는 설정만 별도 문서에 남긴다

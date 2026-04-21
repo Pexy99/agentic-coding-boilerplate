@@ -14,6 +14,7 @@
 4. 활성 트랙 정보: `docs/tracks.md` 및 해당 트랙의 `spec.md`, `plan.md`
 
 `docs/product.md` 또는 `docs/tech-stack.md`가 템플릿 상태라면 기능 작업을 시작하지 말고 먼저 `init-project` 흐름으로 전역 문맥을 초기화하십시오.
+루트 `README.md`가 여전히 보일러플레이트 소개 상태라면 실제 프로젝트 초기화가 끝난 것으로 보지 마십시오.
 
 ## 에이전트 의무
 - 새 프로젝트에서 첫 작업을 시작하기 전 `docs/product.md`와 `docs/tech-stack.md`가 실제 프로젝트 내용으로 채워졌는지 확인하십시오.
