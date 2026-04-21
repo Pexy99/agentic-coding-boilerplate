@@ -1,11 +1,19 @@
 ---
 name: quick-change
-description: Handle a small change without creating a track by using a non-main branch, keeping scope small, validating the change, and preparing it for PR.
+description: Make one small non-track change, verify it locally, and stop without automatically continuing into commit, validation, or PR preparation.
 ---
 
 # Skill: Quick Change
 
-이 스킬은 트랙이 필요 없는 작은 수정에 사용합니다.
+## Purpose
+
+이 스킬은 트랙이 필요 없는 작은 수정의 변경 단계까지만 담당합니다. 작은 변경을 만들고 로컬 검증까지 수행한 뒤 멈춥니다.
+
+## Inputs
+
+- 작은 수정 요청
+- 트랙이 필요 없다고 판단할 수 있는 범위
+- `main`이 아닌 작업 브랜치 또는 브랜치를 만들 수 있는 상태
 
 ## When to Use
 
@@ -26,9 +34,6 @@ description: Handle a small change without creating a track by using a non-main 
 6. 수정합니다.
 7. 변경에 맞는 자동 검증을 수행합니다.
 8. 자동 검증이 어렵다면 수동 확인 방법과 결과를 기록합니다.
-9. `save-work`로 커밋합니다.
-10. `validate-change`로 점검합니다.
-11. `prepare-pr`로 PR을 준비합니다.
 
 ## Rules
 
@@ -40,9 +45,24 @@ description: Handle a small change without creating a track by using a non-main 
 - 큰 기술 결정이 생기면 `write-adr`을 사용합니다.
 - 커밋 type은 변경 성격에 맞게 `docs`, `fix`, `chore`, `refactor`, `test` 중에서 고릅니다.
 
-## Output
+## Outputs
 
 - 생성한 브랜치
 - 변경 요약
-- 검증 결과
-- PR 준비 상태
+- 로컬 검증 결과
+
+## Stop Condition
+
+작은 변경과 로컬 검증이 끝나면 멈춥니다. 커밋, 공식 검증 단계, PR 준비는 이 스킬의 범위가 아닙니다.
+
+## Recommended Next Step
+
+일반적으로 다음 단계는 `save-work` 또는 `validate-change`입니다. 단, 자동으로 실행하지 않고 다음 단계로만 제안합니다.
+
+## Non-goals
+
+- 트랙을 생성하지 않습니다.
+- `save-work`를 대신 수행하지 않습니다.
+- `validate-change`를 대신 수행하지 않습니다.
+- `prepare-pr`를 수행하지 않습니다.
+- 다음 스킬을 자동 호출하지 않습니다.

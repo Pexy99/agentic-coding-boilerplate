@@ -1,11 +1,19 @@
 ---
 name: cleanup-branches
-description: Safely review and clean up local branches after PRs are merged without deleting active or unmerged work automatically.
+description: Review and clean up merged local branches only, then stop without modifying tracks, validation, or PR state.
 ---
 
 # Skill: Cleanup Branches
 
-이 스킬은 PR 병합 후 남은 로컬 브랜치를 안전하게 정리할 때 사용합니다.
+## Purpose
+
+이 스킬은 PR 병합 후 로컬 브랜치를 안전하게 정리하는 단계까지만 담당합니다.
+
+## Inputs
+
+- 병합이 끝난 작업 브랜치들
+- 로컬 git 상태
+- 브랜치 삭제 전 사용자 확인
 
 ## When to Use
 
@@ -34,8 +42,23 @@ description: Safely review and clean up local branches after PRs are merged with
 - 강제 삭제(`git branch -D`)는 사용하지 않습니다.
 - 원격 브랜치 삭제는 GitHub의 `Automatically delete head branches` 설정에 맡깁니다.
 
-## Output
+## Outputs
 
 - 삭제한 로컬 브랜치
 - 삭제하지 않은 브랜치와 이유
 - 추가 확인이 필요한 오래된 브랜치
+
+## Stop Condition
+
+로컬 브랜치 정리가 끝나면 멈춥니다. 문서 정리나 트랙 종료는 이 스킬의 범위가 아닙니다.
+
+## Recommended Next Step
+
+일반적으로 다음 단계는 없습니다. 필요하면 다른 변경 작업을 시작할 수 있다고만 제안합니다.
+
+## Non-goals
+
+- `docs/tracks.md`를 수정하지 않습니다.
+- 트랙 종료를 수행하지 않습니다.
+- `validate-change`나 `prepare-pr`를 수행하지 않습니다.
+- 다음 스킬을 자동 호출하지 않습니다.

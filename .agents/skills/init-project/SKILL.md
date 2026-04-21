@@ -1,11 +1,19 @@
 ---
 name: init-project
-description: Initialize project-wide context documents before any feature track starts by filling product, tech stack, setup, CI, deployment, and style guide decisions.
+description: Initialize project-wide context documents and scaffolding decisions before any track starts, then stop before actual feature work.
 ---
 
 # Skill: Init Project
 
-이 스킬은 새 프로젝트를 시작할 때 전역 문맥 문서를 초기화하는 데 사용합니다.
+## Purpose
+
+이 스킬은 새 프로젝트의 전역 문맥과 구조 규칙을 초기화하는 단계까지만 담당합니다.
+
+## Inputs
+
+- 보일러플레이트를 실제 프로젝트로 쓰기 시작한 상태
+- `docs/product.md` 또는 `docs/tech-stack.md`가 템플릿 상태이거나 미완성인 상태
+- 프로젝트의 제품/기술/검증 정보
 
 ## When to Use
 
@@ -26,7 +34,6 @@ description: Initialize project-wide context documents before any feature track 
 9. 정보가 부족하면 먼저 질문합니다.
 10. 답변을 바탕으로 전역 문서를 짧게 채웁니다.
 11. 공식 스캐폴더를 쓸 프로젝트라면 임의 구조 생성을 하기 전에 그 도구를 먼저 실행하도록 제안합니다.
-12. 초기화가 끝난 뒤에만 `quick-change` 또는 `start-track`으로 넘어갑니다.
 
 ## Questions
 
@@ -51,8 +58,22 @@ description: Initialize project-wide context documents before any feature track 
 - 구조 규칙이 정해지지 않은 상태에서 루트에 임의 파일을 만들지 않습니다.
 - 코드가 생기기 전이라도 CI에서 무엇을 검사할지 `docs/ci.md` 기준으로 확인합니다.
 
-## Output
+## Outputs
 
-- 초기화한 문서
+- 초기화한 전역 문서
+- 구조/스캐폴딩 결정
 - 아직 TODO로 남은 결정
-- 다음에 사용할 스킬
+
+## Stop Condition
+
+전역 문맥 문서와 구조 규칙이 초기화되면 멈춥니다. 기능 구현이나 트랙 생성은 다음 단계 책임입니다.
+
+## Recommended Next Step
+
+일반적으로 다음 단계는 `quick-change` 또는 `start-track`입니다. 단, 자동으로 실행하지 않고 다음 단계로만 제안합니다.
+
+## Non-goals
+
+- 기능 구현을 하지 않습니다.
+- 트랙을 생성하지 않습니다.
+- 다음 스킬을 자동 호출하지 않습니다.
